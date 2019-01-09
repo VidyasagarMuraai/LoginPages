@@ -1,0 +1,16 @@
+{
+    "/cordys/*": {
+        "target": "http://192.168.0.204:97",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {"^/target" : ""}
+        },
+        "/home/Entity/*": {
+            "target": "http://192.168.0.204:97",
+            "secure": false,
+            "logLevel": "debug",
+            "changeOrigin": true,
+            "pathRewrite": {"^/target" : ""}
+            }
+}
