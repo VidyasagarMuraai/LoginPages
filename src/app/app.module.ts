@@ -7,9 +7,12 @@ import { SOAPHandlerService } from './cordysServices/soap-handler.service'
 import {SOAPHandlerModule} from './cordysServices/soap-hander.module'
 import {LoginComponent} from './login/login.component'
 import { LoginModule } from './login/login.module';
+import {DashboardModule} from './dashboard/dashboard.module'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
   ],
   imports: [
     BrowserModule,

@@ -38,3 +38,9 @@
  
   
 }
+.is-invalid{
+  color: #a64bf4;
+}
+.invalid-feedback{
+  color: #ff0000;
+}

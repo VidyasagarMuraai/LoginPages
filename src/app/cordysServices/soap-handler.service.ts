@@ -17,7 +17,7 @@ import {
   
   @Injectable()
   export class SOAPHandlerService {
-    public static GATEWAY_URL: string = "/home/Entity/com.eibus.web.soap.Gateway.wcp?organization=o=Entity,cn=cordys,cn=defaultInst,o=muraai.com";
+    public static GATEWAY_URL: string = "/home/RandstadNew/com.eibus.web.soap.Gateway.wcp?organization=o=RandstadNew,cn=cordys,cn=defaultInst,o=muraai.com";
     public static ERROR = false;
     constructor(private _http: HttpClient) {}
   
@@ -120,13 +120,13 @@ import {
         }
       });
     }
-    public UserDetailsFromCordys(id){
+    public UserDetailsFromCordys(data:any){
       let request = {
-        USER_ID: id
+        userid: data
       };
       return this.callOTPSSoapService(
-        "GetUserDetailsObject",
-        "http://schemas.cordys.com/Wsapp",
+        "GetLMSUserDetails",
+        "http://schemas.cordys.com/RandstadLMS",
         request,
         null
         );
