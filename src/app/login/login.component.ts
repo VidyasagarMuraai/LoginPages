@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     alert('SUCCESS!! :-)')
 }
 checkValidUser(){
- 
+  localStorage.setItem("username",this.registerForm.controls.username.value);
   this.soapService.UserDetailsFromCordys(this.registerForm.controls.username.value).subscribe(
      (response:any) =>{
       let tupleNodes = $.cordys.json.findObjects(response, 'RS_LMS_User_Details');
@@ -65,11 +65,7 @@ checkValidUser(){
         alert("User Id not Activated");
         return;
       }
-      if(this.registerForm.controls.username.value=="" && this.registerForm.controls.password.value=="")
-			{
-			  alert("Username and password cannot be blank");
-			  return;
-      }
+     
       this.route.navigate(['/dashboard']);
       
      },

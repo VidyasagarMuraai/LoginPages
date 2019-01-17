@@ -19,6 +19,7 @@ import {DashboardModule} from './dashboard/dashboard.module'
     AppRoutingModule,
     SOAPHandlerModule,
     LoginModule,
+    DashboardModule,
   ],
   providers: [SOAPHandlerModule],
   bootstrap: [AppComponent]

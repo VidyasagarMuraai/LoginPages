@@ -131,6 +131,17 @@ import {
         null
         );
       }
+     public getMenuDetailsForRole(data:any){
+       let request={
+        categorytype:data+"Menu"
+       }
+       return this.callOTPSSoapService(
+         "GetMenuCategories",
+         "http://schemas.cordys.com/RandstadLMS",
+         request,
+         null,
+       );
+     }
    
 
   }

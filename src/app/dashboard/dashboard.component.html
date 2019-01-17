@@ -1,3 +1,41 @@
-<p>
-  dashboard works!
-</p>
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">         
+        <img src = "../assets/Images/Angular_Icon.png" class="imageResize">
+      <mat-nav-list>
+        <a mat-list-item (click) = "course()" style="color:white">Courses</a>
+        <a mat-list-item style="color:white">Alumini</a>
+        <a mat-list-item style="color:white">Reviews</a>
+      </mat-nav-list>
+      
+    </mat-drawer>
+  
+    <div style="text-align:center" class = "styleAttribute">
+        <div class="w3-container top">
+          <div class="  w3-wide toptext" 
+          style="font-family:'Segoe UI',Arial,sans-serif">
+          </div>
+        </div>
+    </div>
+    <div>
+    
+            <ul>
+              <li>
+                <button mat-button>
+                <mat-icon class ="iconStyle" (click) = "drawer.toggle()">menu</mat-icon>
+              </button>
+              </li>
+              <li>
+                  <a>Home</a>
+              </li>
+              <li><a>Login</a></li>
+              <li><a>Sign Up</a></li>
+              
+              <li style="float:right"><a>About</a></li>
+            </ul>
+    
+         
+            
+    </div>
+  
+  </mat-drawer-container>
