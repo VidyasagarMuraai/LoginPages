@@ -20,9 +20,7 @@ export class DashboardComponent implements OnInit {
     this.username=localStorage.getItem("username");
     this.SetMenuBasedOnRole("BD");
   }
-  goToCreateLead(){
-    window.location.href = 'http://192.168.0.150:81/home/RandstadNew/com/opentext/lms/xforms/Transactions/Lead_Details.caf';
-  }
+
   SetMenuBasedOnRole(data:any){
     this.soapService.getMenuDetailsForRole(data).subscribe(
       (response:any)=>{
