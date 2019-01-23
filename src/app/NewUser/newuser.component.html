@@ -1,55 +1,107 @@
 <div  display="flex" fxLayout="row wrap" fxLayoutAlign="flex-start center " fxLayoutGap="80px" class="content" >
+
     <div flex="33">
-        <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Name" >
+            <form class="example-form">
+            <mat-form-field class="example-full-width"  >
+              <input matInput placeholder="Name" #name [formControl]="emailFormControl">
+			    <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+         
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Father Name" > 
+                <select matNativeControl placeholder="Gender" (change)="gender($event.target.value)" >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
             </mat-form-field>
-          </form>
+        </form>
+        
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Mother Name" >
+              <input matInput placeholder="Father Name" #fname [formControl]="emailFormControl"> 
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+      
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Mobile No"  >
+              <input matInput placeholder="Mother Name" #mname [formControl]="emailFormControl">
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+         
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Address" >
+              <input matInput placeholder="Mobile No" #mobileNo [formControl]="emailFormControl">
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+          
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-                <select  matNativeControl placeholder="Designation" >
+              <input matInput placeholder="Address" #address [formControl]="emailFormControl">
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+          
+    </div>
+    <div flex="33">
+            <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <select  matNativeControl placeholder="Designation" (change)="designation($event.target.value)" >
                     <option value="associate">Associate Software Consultant</option>
                     <option value="software">Software Consultant</option>
                     <option value="senior">Senior Software Consultant</option>
                     <option value="manager">Project Manager</option>
                   </select>
             </mat-form-field>
-          </form>
+        </form>
+          
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-                <select matNativeControl placeholder="Experience" >
+                <select matNativeControl placeholder="Experience" (change)="experience($event.target.value)" >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -61,48 +113,96 @@
                     <option value="above8">Above 8</option>
                   </select>
             </mat-form-field>
-          </form>
+        </form>
+        
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Projects Handled" >
+              <input matInput placeholder="Projects Handled" [formControl]="emailFormControl">
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+         
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Project Manager">
+              <input matInput placeholder="Project Manager" #pm [formControl]="emailFormControl"> 
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+          
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Leaves Applied">
+              <input matInput placeholder="Leaves Applied" #la [formControl]="emailFormControl">
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+          
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Leaves Remaining">
+              <input matInput placeholder="Leaves Remaining" #lr [formControl]="emailFormControl">
+			  <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-          </form>
+        </form>
+        
     </div>
     <div flex="33">
-        <form class="example-form">
+            <form class="example-form">
             <mat-form-field class="example-full-width">
-                <select matNativeControl placeholder="Status">
+                <select matNativeControl placeholder="Status" (change)="status($event.target.value)" >
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                   </select>
             </mat-form-field>
-          </form>
+        </form>
+         
+    </div>
+    <div flex="33">
+            <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="EmployeeID" #empID [formControl]="emailFormControl">
+				<mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Please enter a valid email address
+				</mat-error>
+				<mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+
     </div>
 </div>
-<div display="flex" fxLayout="row wrap" fxLayoutAlign="center" >
-    <button mat-raised-button color="primary" (click)="createNewUser()">Save</button>
-    <button mat-raised-button color="warn">Cancel</button>
-</div>
+          <button mat-raised-button color="primary" [disabled]="!emailFormControl.valid" (click)="createNewUser(name.value,fname.value,mname.value,mobileNo.value,address.value,pm.value,la.value,lr.value,empID.value)">Save</button>
+          <button mat-raised-button color="warn" (click)="close()">Cancel</button>
+
