@@ -17,7 +17,7 @@ import {
   
   @Injectable()
   export class SOAPHandlerService {
-    public static GATEWAY_URL: string = "/home/RandstadNew/com.eibus.web.soap.Gateway.wcp?organization=o=RandstadNew,cn=cordys,cn=defaultInst,o=muraai.com";
+    public static GATEWAY_URL: string = "/home/Entity/com.eibus.web.soap.Gateway.wcp?organization=o=Entity,cn=cordys,cn=defaultInst,o=muraai.com";
     public static ERROR = false;
     constructor(private _http: HttpClient) {}
   
@@ -120,18 +120,61 @@ import {
         }
       });
     }
-    public UserDetailsFromCordys(data:any){
+    public getUserLoginFromCordys(usernmae:any,password:any){
       let request = {
-        userid: data
+        userID: usernmae,
+        Password:password,
       };
       return this.callOTPSSoapService(
-        "GetLMSUserDetails",
-        "http://schemas.cordys.com/RandstadLMS",
+        "GetUserLoginBasedIdAndPass",
+        "http://schemas.cordys.com/Wsapp",
         request,
         null
         );
       }
-   
+      public getAllUserDetails(){
+        return this.callOTPSSoapService(
+          "GetAllUserDetails",
+          "http://schemas.cordys.com/Wsapp",
+          null,
+          null
+        )
+      }
+      public deleteUserFromUserDetails(data:any){
+        return this.httpPostRequest(SOAPHandlerService.GATEWAY_URL,
+        '<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"><SOAP:Body> '
+        +'<UpdateUserDetails xmlns="http://schemas.cordys.com/Wsapp" reply="yes" commandUpdate="no" preserveSpace="no" batchUpdate="no"> '
+        +'<tuple><old><USER_DETAILS qConstraint="0"><USER_ID>'+data+'</USER_ID> </USER_DETAILS></old></tuple></UpdateUserDetails> '
+        +'</SOAP:Body></SOAP:Envelope>','xml');
+      }
+      public getUserDetailsBasedOnID(data:any){
+        let reqest={
+          USER_ID:data
+        };
+        return this.callOTPSSoapService(
+          "GetUserDetailsObject",
+          "http://schemas.cordys.com/Wsapp",
+          reqest,
+          null
+        )
+      }
+      public createNewUser(data:any){
+          return this.httpPostRequest(SOAPHandlerService.getGateWayURL(),
+        '<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"><SOAP:Body> '
+        +'<UpdateUserDetails xmlns="http://schemas.cordys.com/Wsapp" reply="yes" commandUpdate="no" preserveSpace="no" batchUpdate="no"> '
+        +'<tuple><new><USER_DETAILS qAccess="0" qConstraint="0" qInit="0" qValues=""> '
+        +'<USER_NAME>'+data.username+'</USER_NAME><EMP_ID>'+data.empID+'</EMP_ID><GENDER>'+data.gender+'</GENDER> '
+        +'<MANAGER>'+data.manager+'</MANAGER><NO_OF_LEAVES_REMAIN>'+data.remain+'</NO_OF_LEAVES_REMAIN> '
+        +'<NO_OF_LEAVES_APPLIED>'+data.app+'</NO_OF_LEAVES_APPLIED><SALARY>'+data.sal+'</SALARY> '
+        +'<LOCATION>'+data.location+'</LOCATION><PHONE_NO>'+data.phoneNo+'</PHONE_NO> '
+        +'<USER_ID></USER_ID><PERIOD>'+data.period+'</PERIOD> '
+        +'<DESIGNATION>'+data.designation+'</DESIGNATION><EXPERIENCE>'+data.exp+'</EXPERIENCE> '
+        +'<PROJECTS></PROJECTS><FATHER_NAME>'+data.fname+'</FATHER_NAME><MOTHER_NAME>'+data.mname+'</MOTHER_NAME> '
+        +'<EMERGENCY_CONTACT>'+data.emrContact+'</EMERGENCY_CONTACT><STATUS>'+data.status+'</STATUS></USER_DETAILS></new> '
+        +'</tuple></UpdateUserDetails></SOAP:Body></SOAP:Envelope> ','xml');
+
+      }
+
 
   }
   

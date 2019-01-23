@@ -8,6 +8,12 @@ import {SOAPHandlerModule} from './cordysServices/soap-hander.module'
 import {LoginComponent} from './login/login.component'
 import { LoginModule } from './login/login.module';
 import {DashboardModule} from './dashboard/dashboard.module'
+import {NewuserModule} from './NewUser/newuser.module'
+import {LmsMaterialModule} from './lms-material.module';
+import {DialogModule} from './dialog/dialog.module';
+
+
+
 
 @NgModule({
   declarations: [
@@ -19,6 +25,11 @@ import {DashboardModule} from './dashboard/dashboard.module'
     AppRoutingModule,
     SOAPHandlerModule,
     LoginModule,
+    DashboardModule,
+    NewuserModule,
+    LmsMaterialModule,
+    DialogModule,
+   
   ],
   providers: [SOAPHandlerModule],
   bootstrap: [AppComponent]

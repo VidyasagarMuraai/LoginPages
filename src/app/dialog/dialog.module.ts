@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard.component';
+import { DialogComponent } from './dialog.component';
 import { LmsMaterialModule} from '../lms-material.module';
-import {AppRoutingModule} from '../app-routing.module';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DialogComponent],
   imports: [
     CommonModule,
     LmsMaterialModule,
-    AppRoutingModule,
-   
-    
   ]
 })
-export class DashboardModule { }
+export class DialogModule { }

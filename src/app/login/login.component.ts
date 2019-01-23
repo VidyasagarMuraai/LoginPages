@@ -14,10 +14,10 @@ declare var $:any;
 
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
-    submitted = false;
+  submitted = false;
   loginID:any;
   username:any;
-  status:any;
+  val:any;
   
  
 
@@ -40,37 +40,35 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     
     this.submitted = true;
-    console.log("The register form is "+this.registerForm.controls);
-    console.log(this.registerForm.controls)
-    // stop here if form is invalid
+   
     if (this.registerForm.invalid) {
         return;
     }
 
-    alert('SUCCESS!! :-)')
+
 }
 checkValidUser(){
  
-  this.soapService.UserDetailsFromCordys(this.registerForm.controls.username.value).subscribe(
+  this.soapService.getUserLoginFromCordys(this.registerForm.controls.username.value,this.registerForm.controls.password.value).subscribe(
      (response:any) =>{
-      let tupleNodes = $.cordys.json.findObjects(response, 'RS_LMS_User_Details');
+      let tupleNodes = $.cordys.json.findObjects(response, 'USER_LOGIN');
       console.log(tupleNodes);
       if(tupleNodes.length<=0){
            alert("Invalid User Id");
-           return;
+           return false;
       }
-      this.status=tupleNodes[0].UD_STATUS;
-      if(this.status=="false")
+      this.val=tupleNodes[0].count_user;
+      if(this.val=="0")
 			{
         alert("User Id not Activated");
-        return;
+        return false;
       }
       if(this.registerForm.controls.username.value=="" && this.registerForm.controls.password.value=="")
 			{
 			  alert("Username and password cannot be blank");
-			  return;
+			  return false;
       }
-      this.route.navigate(['/dashboard']);
+      this.route.navigate(['/dashboard']); 
       
      },
      (err)=>{
