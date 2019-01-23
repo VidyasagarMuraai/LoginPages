@@ -69,9 +69,7 @@ declare var $:any;
       this.router.navigate(['/dashboard/Newuser']); 
 
     }
-    public moreUserDetails(){
-       
-    }
+  
     public deleteUserDetails(data:any){
       console.log(data.USER_ID);
       const dialogRef=this.dialog.open(DialogComponent,{
