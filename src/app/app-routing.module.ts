@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {NewuserComponent} from './NewUser/newuser.component';
+import {LeaveReqComponent} from './leaveReq/leave-req.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -15,18 +16,24 @@ const routes: Routes = [
     
   },
   {
-    path: 'dashboard',
-
+    path: 'select',
     children :[
     
       {
         path:'Newuser',
         component:NewuserComponent,
       },
+     
       {
-        path:'EmpDetails',
-        component:DashboardComponent,
+      path: 'dashboard',
+      component:DashboardComponent,
       },
+      {
+        path: 'leaveReq',
+        component:LeaveReqComponent,
+      },
+
+      
 
     ]
   },

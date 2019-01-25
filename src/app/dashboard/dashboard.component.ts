@@ -67,6 +67,7 @@ declare var $:any;
 
   
     public deleteUserDetails(data:any){
+      
       console.log(data.USER_ID);
       const dialogRef=this.dialog.open(DialogComponent,{
         width: '250px',

@@ -12,6 +12,7 @@ import {NewuserModule} from './NewUser/newuser.module'
 import {LmsMaterialModule} from './lms-material.module';
 import {DialogModule} from './dialog/dialog.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {LeaveReqModule} from './leaveReq/leave-req.module';
 
 
 
@@ -31,6 +32,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     LmsMaterialModule,
     DialogModule,
     FlexLayoutModule,
+    LeaveReqModule,
    
   ],
   providers: [SOAPHandlerModule],

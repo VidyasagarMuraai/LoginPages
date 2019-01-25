@@ -21,11 +21,20 @@ export class AppComponent {
   }
   public createNewUser(){
   
-    this.router.navigate(['/dashboard/Newuser']); 
+    this.router.navigate(['/select/Newuser']); 
 
   }
   public empDetails(){
-    this.router.navigate(['/dashboard/EmpDetails']); 
+    this.router.navigate(['/select/EmpDetails']); 
+  }
+  public redirectToHome(){
+    this.router.navigate(['/select/dashboard']); 
+  }
+  public redirectToLogin(){
+    this.router.navigate(['/login']); 
+  }
+  public createLeaveReq(){
+    this.router.navigate(['/select/leaveReq']); 
   }
 
 }
