@@ -11,6 +11,7 @@ import {DashboardModule} from './dashboard/dashboard.module'
 import {NewuserModule} from './NewUser/newuser.module'
 import {LmsMaterialModule} from './lms-material.module';
 import {DialogModule} from './dialog/dialog.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 
@@ -29,6 +30,7 @@ import {DialogModule} from './dialog/dialog.module';
     NewuserModule,
     LmsMaterialModule,
     DialogModule,
+    FlexLayoutModule,
    
   ],
   providers: [SOAPHandlerModule],

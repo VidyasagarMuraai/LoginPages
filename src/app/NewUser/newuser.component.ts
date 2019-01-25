@@ -2,7 +2,7 @@ import { Component, OnInit ,Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {SOAPHandlerService} from '../cordysServices/soap-handler.service';
 import {Router} from '@angular/router';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroupDirective, NgForm, Validators,FormGroup} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
 declare var  $:any;
@@ -12,11 +12,47 @@ declare var  $:any;
   styleUrls: ['./newuser.component.css']
 })
 export class NewuserComponent implements OnInit {
+
+  //emailFormControl:FormControl;
+
+  
+
+  
   emailFormControl = new FormControl('', [
-    Validators.required,
     Validators.email,
-   
+    Validators.required,
   ]);
+
+  /*createFormControls(){
+    this.emailFormControl = new FormControl('', [
+      Validators.email,
+      Validators.required,
+    ]);
+    this.name=new FormControl('',[
+      Validators.required,
+    ]);
+    this.fname=new FormControl('',[
+      Validators.required,
+    ]);
+    this.mname=new FormControl('',[
+      Validators.required,
+    ]);
+    this.address= new FormControl('',[
+      Validators.required,
+    ]);
+
+  }
+  createFormGroup(){
+    this.myform = new FormGroup({
+      name: this.name,
+      last: this.fname,
+      mname:this.mname,
+      email:this.emailFormControl,
+      address:  this.address
+    });
+
+  }*/
+ 
   userid:any;
   tupleNode:any;
   desin:any;
@@ -24,13 +60,17 @@ export class NewuserComponent implements OnInit {
   sta:any;
   gen:any;
   
-  constructor(private soapService:SOAPHandlerService,private router:Router) {     
+  constructor(private soapService:SOAPHandlerService,private router:Router) { 
+    //this.createFormControls();
+    //this.createFormGroup();    
+  
     
     }
 
   ngOnInit() {
-   
-    
+  
+    //this.createFormControls();
+   // this.createFormGroup();
   }
   public getUserDetailsBasedOnUserID(){
     this.soapService.getUserDetailsBasedOnID(this.userid).subscribe(

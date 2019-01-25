@@ -1,6 +1,36 @@
+<mat-drawer-container class="example-container">
+        <mat-drawer mode="side" opened style="color:black">
+                <button mat-button>
+                        <mat-icon class ="iconStyle" (click) = "drawer.toggle()">menu</mat-icon>
+                </button>
+            <div>
+                    <mat-icon style="font-size:50px;margin-left: 40px;color:#fafafa" >account_box</mat-icon>
+            </div>
+            <div style="margin-left: 35px;color:#fafafa">
+                    {{"vidyasagar"}}
+                  </div>
+                <div>
+                        <button style="margin-top: 38px" mat-raised-button color="primary" (click)="createNewUser()"> <mat-icon>home</mat-icon>User Registration</button>
+                    </div>
+                    <div>
+                        <button  mat-raised-button color="primary" (click)="empDetails()">Employee Details</button>
+                    </div>
+                    <div>
+                        <button  mat-raised-button color="primary"  (click)="createLeaveReq()">Leave Request</button>
+                    </div>
+                    <div>
+                        <button  mat-raised-button color="primary" (click)="createTravelReq()">Travel Fee Request</button>
+                    </div>
+        </mat-drawer>
+        <mat-drawer-content>
+                <mat-toolbar>
+                        <span>My Application</span>
+                      </mat-toolbar>
+                <router-outlet></router-outlet>
+        </mat-drawer-content>
+      </mat-drawer-container>
 
 
-<router-outlet></router-outlet>
 
 
 

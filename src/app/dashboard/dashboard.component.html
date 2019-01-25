@@ -1,27 +1,4 @@
 
-<mat-drawer-container >
-  <mat-drawer #drawer class="example-sidenav"  mode="side" opened>
-      <mat-icon style="font-size:50px;margin-left: 40px;color:#fafafa">account_box</mat-icon>
-      <div style="margin-left: 35px;color:#fafafa">
-        {{"vidyasagar"}}
-      </div>
-     <div fxLayout="Column wrap" display="flex" fxLayoutGap="5px">
-        <div>
-            <button  mat-raised-button color="primary" (click)="createNewUser()"> User Registration</button>
-        </div>
-        <div>
-            <button  mat-raised-button color="primary"  (click)="createLeaveReq()">Leave Request</button>
-        </div>
-        <div>
-            <button  mat-raised-button color="primary" (click)="createTravelReq()">Travel Fee Request</button>
-        </div>
-     </div>
-    
-      </mat-drawer>
-  <mat-drawer-content>
-    <div>
-
-    </div>
     <div class="mat-elevation-z8" >
       <table mat-table [dataSource]="dataSource" class="table" >
     
@@ -50,11 +27,11 @@
         </ng-container>
         <ng-container matColumnDef="Update">
             <th mat-header-cell *matHeaderCellDef>More Details</th>
-            <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="updateUserDetails()">Update</button> </td>
+            <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="updateUserDetails()"><mat-icon>edit</mat-icon></button> </td>
           </ng-container>
         <ng-container matColumnDef="Delete">
               <th mat-header-cell *matHeaderCellDef>Delete</th>
-              <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="deleteUserDetails(element)">Delete</button> </td>
+              <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="deleteUserDetails(element)"><mat-icon>delete</mat-icon></button> </td>
           </ng-container>
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -64,10 +41,3 @@
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
     
-  </mat-drawer-content>
-</mat-drawer-container>
-
-
-
-
-

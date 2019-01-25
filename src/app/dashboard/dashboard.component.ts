@@ -64,11 +64,7 @@ declare var $:any;
      )
    }
    
-    public createNewUser(){
-      //this.createNewUserHide=true;
-      this.router.navigate(['/dashboard/Newuser']); 
 
-    }
   
     public deleteUserDetails(data:any){
       console.log(data.USER_ID);

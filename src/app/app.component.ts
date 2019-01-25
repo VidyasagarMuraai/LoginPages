@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
-import {SOAPHandlerService} from './cordysServices/soap-handler.service';
-import {LoginComponent} from './login/login.component'
+import { Component, OnInit,ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
+import {MatIconModule,MatSidenavModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { SOAPHandlerService} from './cordysServices/soap-handler.service';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {DialogComponent} from './dialog/dialog.component';
 declare var $:any;
 @Component({
   selector: 'app-root',
@@ -12,24 +17,15 @@ export class AppComponent {
   loginID:any;
   password:any;
   successlogin:any;
-  constructor(private soapService:SOAPHandlerService){
+  constructor(private soapService:SOAPHandlerService,private router:Router){
   }
-  /*getAppComponent(){
-    let id='1';
-    this.soapService.UserDetailsFromCordys(id).subscribe(
-      (response:any) =>{
-        console.log("the total response is"+response);
-        let tupleNodes = $.cordys.json.findObjects(response, 'USER_DETAILS');
-        this.successlogin=tupleNodes[0].count_user;
-        console.log("the response is"+this.successlogin);
-      },
-      (err)=>{
-
-      }
-    )
+  public createNewUser(){
   
-    
+    this.router.navigate(['/dashboard/Newuser']); 
 
-  }*/
+  }
+  public empDetails(){
+    this.router.navigate(['/dashboard/EmpDetails']); 
+  }
 
 }
