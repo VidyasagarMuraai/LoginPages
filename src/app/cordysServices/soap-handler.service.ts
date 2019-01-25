@@ -78,7 +78,6 @@ import {
   
     public callOTPSSoapService(methodname: string, namespace: string, parameters: any, extraParams, successHandler = null, failureHandler = null) {
       let response = null;
-      alert("Entered");
       jQuery.cordys.json.defaults.removeNamespacePrefix = true;
       var compRef = this;
       if (SOAPHandlerService.getGateWayURL() != null && SOAPHandlerService.getGateWayURL() != "")
@@ -160,7 +159,7 @@ import {
       }
       public createNewUser(data:any){
           return this.httpPostRequest(SOAPHandlerService.getGateWayURL(),
-        '<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"><SOAP:Body> '
+         '<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"><SOAP:Body> '
         +'<UpdateUserDetails xmlns="http://schemas.cordys.com/Wsapp" reply="yes" commandUpdate="no" preserveSpace="no" batchUpdate="no"> '
         +'<tuple><new><USER_DETAILS qAccess="0" qConstraint="0" qInit="0" qValues=""> '
         +'<USER_NAME>'+data.username+'</USER_NAME><EMP_ID>'+data.empID+'</EMP_ID><GENDER>'+data.gender+'</GENDER> '

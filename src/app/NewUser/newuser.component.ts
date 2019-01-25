@@ -59,6 +59,7 @@ export class NewuserComponent implements OnInit {
   exp:any;
   sta:any;
   gen:any;
+  type:any;
   
   constructor(private soapService:SOAPHandlerService,private router:Router) { 
     //this.createFormControls();
@@ -79,32 +80,45 @@ export class NewuserComponent implements OnInit {
       }
     )
   }
-  public createNewUser(name:any,fname:any,mname:any,mobile:any,add:any,pm:any,la:any,lr:any,empID:any){
+  public createNewUser(name:any,fname:any,mname:any,mobile:any,add:any,pm:any,la:any,lr:any,empID:any,loc:any){
     const busObj={
       username:name,empID:empID,gender:this.gen,manager:pm,remain:lr,app:la,sal:'100',phoneNo:mobile,designation:this.desin
-      ,exp:this.exp,fname:fname,mname:mname,status:this.sta
+      ,exp:this.exp,fname:fname,mname:mname,status:this.sta,location:loc,period:this.type,emrContact:'100'
     }
+    console.log(busObj);
     this.soapService.createNewUser(busObj).subscribe(
-      (response:any)=>{
-        console.log(response);
+      (response:any) =>{
+        let tupleNodes = $.cordys.json.findObjects(response, 'USER_DETAILS');
+        console.log(tupleNodes);
+        if(tupleNodes.length>0){
+          alert("Successfully inserted");
+          this.router.navigate(['/select/dashboard']);
+        }
       }
     )
   }
   public close(){
-    this.router.navigate(['\dashboard'])
+    this.router.navigate(['/select/dashboard'])
   }
   public experience(event){
     console.log(event);
     this.exp=event;
   }
   public designation(event){
+    console.log(event);
     this.desin=event;
   }
   public status(event){
+    console.log(event);
     this.sta=event;
   }
   public gender(event){
+    console.log(event);
    this.gen=event;
+  }
+  public typeOfJob(data:any){
+    console.log(data);
+    this.type=data;
   }
 
 
