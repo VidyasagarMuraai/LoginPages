@@ -1,42 +1,40 @@
-<div class="container" fxLayout="row nowrap" fxLayoutAlign="Start" >
+<div class="container" fxLayout="row nowrap"  >
     <div display= "flex"  fxFlex="50%" >
-            <mat-form-field > 
+        <mat-form-field > 
             <input  placeholder="No of Leaves Applied"  matInput disabled>
-            </mat-form-field>
+        </mat-form-field>
    </div>
-   <div display= "flex" >
+   <div display= "flex" fxFlex="50%">
         <mat-form-field > 
         <input  placeholder="Remaining Leaves"  matInput disabled>
         </mat-form-field>
    </div>
 </div>
-<div class="container" fxLayout="row wrap" fxLayoutAlign="Start" >
-    <div  display= "flex" fxFlex="30%" >
+<div class="container" fxLayout="row wrap" fxLayoutGap="20px"  >
+    <div>
         <mat-form-field > 
         <input  placeholder="Start Date" type="datetime-local"  matInput >
         </mat-form-field>
     </div>
-    <div  display= "flex" fxFlex = "30%">
-      
+    <div>
         <mat-form-field>
         <input  placeholder="End Date"  type="datetime-local"  matInput>
         </mat-form-field>
     </div>
-    <div   display= "flex" fxFlex = "30%">
+    <div>
         <mat-form-field>
         <input  placeholder="Reason for Leave" matInput>
         </mat-form-field>
     </div>
-    <div  display= "flex" fxFlex = "30%" >  
+    <div>  
         <mat-form-field >
         <input placeholder="No of leaves" matInput disabled>
         </mat-form-field>
     </div>
-    <div display= "flex"  fxLayoutGap="80px" class="content" >
-     <button mat-raised-button  color="primary" (click)="setLeavesreqIntoDB()" >Submit</button>
-    </div>
-    <div>
-    <button mat-raised-button  color="warn" (click)="close()">Cancel</button>
-    </div>
+   
+</div>
+<div  fxLayoutAlign="center" fxLayoutGap="10px" >
+        <button mat-raised-button  color="primary" (click)="setLeavesreqIntoDB()" >Submit</button>
+        <button mat-raised-button  color="warn" (click)="close()">Cancel</button>
 </div>
 

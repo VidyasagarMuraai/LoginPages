@@ -58,6 +58,7 @@ declare var $:any;
            this.tupleNodes = $.cordys.json.findObjects(response, 'USER_DETAILS');
            console.log(this.tupleNodes);
            this.dataSource= new MatTableDataSource<PeriodicElement>(this.tupleNodes);
+           this.dataSource.paginator = this.paginator;
          },
          (err)=>{
         }
@@ -67,17 +68,28 @@ declare var $:any;
 
   
     public deleteUserDetails(data:any){
-      
+      if(confirm("Are you sure to delete "+data.EMP_ID)) {
+        console.log("Implement delete functionality here");
+        this.sOAPHandlerService.deleteUserFromUserDetails(data.USER_ID).subscribe(
+          (reponse:any)=>{
+            console.log("Successfully deleted");
+          },
+          (err)=>{
+            console.log("Successfully deleted");
+            window.location.reload();
+          }
+        )
+      }
+    }
+    public updateUserDetails(data:any){
       console.log(data.USER_ID);
+      let userid=data.USER_ID
       const dialogRef=this.dialog.open(DialogComponent,{
-        width: '250px',
-        data:data.USER_ID
+        width: '700px',
+        height:'450px',
+        data:userid
       });
-     
-      //this.userDetailsTemplates();
-   
 
-      
     }
     
   }

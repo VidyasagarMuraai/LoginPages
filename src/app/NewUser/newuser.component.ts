@@ -2,7 +2,7 @@ import { Component, OnInit ,Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {SOAPHandlerService} from '../cordysServices/soap-handler.service';
 import {Router} from '@angular/router';
-import {FormControl, FormGroupDirective, NgForm, Validators,FormGroup} from '@angular/forms';
+import {FormControl, FormGroupDirective, NgForm, Validators,FormGroup,FormBuilder} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
 declare var  $:any;
@@ -12,47 +12,8 @@ declare var  $:any;
   styleUrls: ['./newuser.component.css']
 })
 export class NewuserComponent implements OnInit {
-
-  //emailFormControl:FormControl;
-
-  
-
-  
-  emailFormControl = new FormControl('', [
-    Validators.email,
-    Validators.required,
-  ]);
-
-  /*createFormControls(){
-    this.emailFormControl = new FormControl('', [
-      Validators.email,
-      Validators.required,
-    ]);
-    this.name=new FormControl('',[
-      Validators.required,
-    ]);
-    this.fname=new FormControl('',[
-      Validators.required,
-    ]);
-    this.mname=new FormControl('',[
-      Validators.required,
-    ]);
-    this.address= new FormControl('',[
-      Validators.required,
-    ]);
-
-  }
-  createFormGroup(){
-    this.myform = new FormGroup({
-      name: this.name,
-      last: this.fname,
-      mname:this.mname,
-      email:this.emailFormControl,
-      address:  this.address
-    });
-
-  }*/
- 
+  registerForm: FormGroup;
+  submitted = false;
   userid:any;
   tupleNode:any;
   desin:any;
@@ -60,18 +21,26 @@ export class NewuserComponent implements OnInit {
   sta:any;
   gen:any;
   type:any;
-  
-  constructor(private soapService:SOAPHandlerService,private router:Router) { 
-    //this.createFormControls();
-    //this.createFormGroup();    
-  
-    
+  valid=true;
+  constructor(private soapService:SOAPHandlerService,private router:Router,private formBuilder: FormBuilder) { 
+
     }
 
   ngOnInit() {
+      this.registerForm = this.formBuilder.group({
+          name: ['', Validators.required],
+          fname: ['', Validators.required],
+          mname: ['', [Validators.required]],
+          mobileNo: ['', [Validators.required]],
+          pm: ['', Validators.required],
+          leaveApp: ['', [Validators.required]],
+          leaveRe: ['', [Validators.required]],
+          empID: ['', Validators.required],
+          loc: ['', Validators.required],
+          address: ['', [Validators.required]]
+         
+      });
   
-    //this.createFormControls();
-   // this.createFormGroup();
   }
   public getUserDetailsBasedOnUserID(){
     this.soapService.getUserDetailsBasedOnID(this.userid).subscribe(
@@ -80,22 +49,50 @@ export class NewuserComponent implements OnInit {
       }
     )
   }
-  public createNewUser(name:any,fname:any,mname:any,mobile:any,add:any,pm:any,la:any,lr:any,empID:any,loc:any){
-    const busObj={
-      username:name,empID:empID,gender:this.gen,manager:pm,remain:lr,app:la,sal:'100',phoneNo:mobile,designation:this.desin
-      ,exp:this.exp,fname:fname,mname:mname,status:this.sta,location:loc,period:this.type,emrContact:'100'
-    }
-    console.log(busObj);
-    this.soapService.createNewUser(busObj).subscribe(
-      (response:any) =>{
-        let tupleNodes = $.cordys.json.findObjects(response, 'USER_DETAILS');
-        console.log(tupleNodes);
-        if(tupleNodes.length>0){
+  public createNewUser(){
+    
+   
+
+      let dataObj={
+        username:this.registerForm.controls.name.value,
+        empID:this.registerForm.controls.empID.value,
+        gender:this.gen,
+        manager:this.registerForm.controls.pm.value,
+        app:this.registerForm.controls.leaveApp.value,
+        remain:this.registerForm.controls.leaveRe.value,
+        phoneNo:this.registerForm.controls.mobileNo.value,
+        designation:this.desin,
+        exp:this.exp,
+        fname:this.registerForm.controls.fname.value,
+        mname:this.registerForm.controls.mname.value,
+        status:this.sta,
+        location:this.registerForm.controls.loc.value,
+        period:this.type,
+        address:this.registerForm.controls.address.value,
+        sal:100,
+        emrContact:100
+
+        
+      }
+      console.log(dataObj);
+      this.soapService.createNewUser(dataObj).subscribe(
+        (response:any) =>{
+          let tupleNodes = $.cordys.json.findObjects(response, 'USER_DETAILS');
+          console.log(tupleNodes);
+          if(tupleNodes.length>0){
+            alert("Successfully inserted");
+           this.router.navigate(['/select/dashboard']);
+          }
+        },
+        (err)=>{
+          console.log(err);
           alert("Successfully inserted");
           this.router.navigate(['/select/dashboard']);
         }
-      }
-    )
+      )
+
+    
+   
   }
   public close(){
     this.router.navigate(['/select/dashboard'])
@@ -120,6 +117,17 @@ export class NewuserComponent implements OnInit {
     console.log(data);
     this.type=data;
   }
+  get f() { return this.registerForm.controls; }
+  onSubmit() {
+    this.submitted = true;
+     if (this.registerForm.invalid) {
+      //this.submitted=false;
+      
+         return;
+     }
+     this.createNewUser();
+     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+ }
 
 
 

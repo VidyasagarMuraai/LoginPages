@@ -36,6 +36,7 @@ import {LeaveReqModule} from './leaveReq/leave-req.module';
    
   ],
   providers: [SOAPHandlerModule],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

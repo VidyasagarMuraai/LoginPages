@@ -1,3 +1,134 @@
-<p>
-  dialog works!
-</p>
+
+  <form   [formGroup]="registerForm">
+  <div  display="flex" fxLayout="row wrap" fxLayoutGap="25px"  style="padding-left: 13px"  class="content" >
+
+    <div class="form-group">
+            <mat-form-field class="example-full-width" >
+                <input matInput placeholder="Name"  formControlName="name"  > 
+                <div *ngIf="f?.name?.errors?.required">Name is required</div>
+            </mat-form-field>
+    </div>
+    <div class="form-group"> 
+            <mat-form-field class="example-full-width">
+                <select matNativeControl placeholder="Gender" (change)="gender($event.target.value)" formControlName="gender" >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                 </select>
+            </mat-form-field>
+    </div>
+    <div class="form-group">
+            <mat-form-field class="example-full-width" >
+              <input matInput placeholder="Father Name" #fname formControlName="fname" > 
+			         	<mat-error *ngIf="f?.fname?.errors?.required">
+                Father name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Mother Name" #mname formControlName="mname" >
+				       <mat-error *ngIf="f?.mname?.errors?.required">
+                Mother name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Mobile No" #mobileNo formControlName="mobile">
+				         <mat-error *ngIf="f?.mobile?.errors?.required">
+                Mobile number is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Address" #address formControlName="address">
+				        <mat-error *ngIf="f?.address?.errors?.required">
+                Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+                <select  matNativeControl placeholder="Designation" (change)="designation($event.target.value)" formControlName="designation">
+                    <option value="associate">Associate Software Consultant</option>
+                    <option value="software">Software Consultant</option>
+                    <option value="senior">Senior Software Consultant</option>
+                    <option value="manager">Project Manager</option>
+                  </select>
+            </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+                <select matNativeControl placeholder="Experience" (change)="experience($event.target.value)" formControlName="exp">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="above8">Above 8</option>
+                  </select>
+            </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Projects Handled" formControlName="projects" >	
+             </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Project Manager" #pm formControlName="projectManager" > 
+            </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Leaves Applied" #la formControlName="leavesapp">
+            </mat-form-field>
+         
+    </div>
+
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+                <select matNativeControl placeholder="Status" (change)="status($event.target.value)" formControlName="status" >
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+            </mat-form-field>
+         
+    </div>
+    <div class="form-group">
+      
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="EmployeeID" #empID formControlName="empID">
+				        <mat-error *ngIf="f.empID.errors?.required">
+                Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+         
+    </div>
+  </div>
+
+</form>
+<div display="flex" fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center" >
+  <button mat-raised-button color="primary" (click)="updateUserDetails()">Save</button>
+  <button mat-raised-button color="warn"(click)="close()">Cancel</button>
+</div>
